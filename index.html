@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>極速賽馬 - 排名結算版</title>
+    <title>DARK RACE 賽馬</title>
     <style>
         body {
             font-family: "Microsoft JhengHei", sans-serif;
@@ -27,7 +27,15 @@
             position: relative;
         }
 
-        h1 { text-align: center; color: #ffcc00; margin: 0 0 15px 0; font-size: 28px; }
+        /* 更改後的帥氣標題 */
+        h1 { 
+            text-align: center; 
+            color: #ffcc00; 
+            margin: 0 0 20px 0; 
+            font-size: 32px; 
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(255, 204, 0, 0.4);
+        }
 
         .status-bar {
             background: #3d3d3d;
@@ -172,11 +180,11 @@
 <canvas id="confetti-canvas"></canvas>
 
 <div class="game-container">
-    <h1>🏁 DARK RACE 賽馬理財</h1>
+    <h1>🏁 DARK RACE 賽馬</h1>
     
     <div class="status-bar">
         <span>資產: $<span id="balance">1000</span></span>
-        <span style="color: #ffcc00;">★ 排名結算版 ★</span>
+        <span style="color: #ffcc00; font-size: 14px;">HIGH STAKES</span>
     </div>
 
     <div class="track-area">
@@ -302,7 +310,6 @@
         const log = document.getElementById('gameLog');
         const rankArea = document.getElementById('rankingArea');
         
-        // 排序排名
         const results = positions.map((pos, idx) => ({ id: idx + 1, pos: pos }))
                                  .sort((a, b) => b.pos - a.pos);
 
@@ -328,7 +335,6 @@
             log.innerHTML = `<span style="color: #ff4d4d">💸 冠軍是 ${winnerText}，下次再來！</span>`;
         }
 
-        // 顯示 1~4 名排名
         rankArea.innerHTML = results.map((r, index) => {
             return `<div class="ranking-item">第 ${index + 1} 名: ${r.id} 號</div>`;
         }).join("");
